@@ -1,10 +1,3 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const PORT = 8000
-
-app.use(cors())
-
 let dodgersRoster = {
 
     //PITCHERS
@@ -323,24 +316,3 @@ let dodgersRoster = {
 
     
 }
-
-
-app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/index.html')
-})
-
-app.get('/api/dodgers/:playerInfo', (request, response) => {
-    const playerBio = request.params.playerInfo.toLowerCase()
-    console.log(playerBio)
-    response.json(dodgersRoster[playerBio])
-    // if(dodgers[playerBio]){
-    //     response.json(dodgersRoster[playerBio])
-    // }else{
-    //     response.json(dodgersRoster['player'])
-    // }
-   
-})
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
